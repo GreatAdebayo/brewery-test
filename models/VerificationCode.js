@@ -8,8 +8,7 @@ const VerificationCode = sequelize.define('verificationcode', {
     },
     email: {
         type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
+        allowNull: false
     },
     exp: {
         type: Sequelize.DATE,

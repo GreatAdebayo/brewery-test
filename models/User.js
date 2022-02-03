@@ -27,6 +27,6 @@ const User = sequelize.define('user', {
     }
 });
 
-User.hasMany(VerificationCode, { as: "verificationcodes" });
+// User.hasMany(VerificationCode, { as: "verificationcodes" });
 
 module.exports = User;

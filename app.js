@@ -14,11 +14,13 @@ app.use(bodyParser.json());
 
 /* Importing all routes */
 const signupRoute = require('./routes/signup&auth/signup')
+const authRoute = require('./routes/signup&auth/auth')
 
 
 
 /* Define Routes */
 app.use('/api', signupRoute)
+app.use('/api', authRoute)
 
 
 /* Connect Database */

@@ -57,7 +57,8 @@ router.post('/signup', [
 /* @route   POST api/sendcode
    @desc    sends verification code
    @access  Public */
-router.post('/sendcode', [
+   router.post('/sendcode', [
+     /* Validation rules */
     check('email')
         .trim()
         .not()
@@ -69,11 +70,10 @@ router.post('/sendcode', [
 
 
 
-
 /* @route   GET api/confirmemail
    @desc    Confirm verification code sent to email
    @access  Public */
-router.get('/confirmemail', [
+router.get('/signup', [
     /* Validation rules */
     check('email')
         .trim()
@@ -92,8 +92,6 @@ router.get('/confirmemail', [
             max: 4
         }).withMessage('4 digit Code Required'),
 ], signupController.confirmEmail)
-
-
 
 
 module.exports = router;
