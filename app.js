@@ -15,12 +15,13 @@ app.use(bodyParser.json());
 /* Importing all routes */
 const signupRoute = require('./routes/signup&auth/signup')
 const authRoute = require('./routes/signup&auth/auth')
-
+const profilePictureRoute = require('./routes/dashboard/profilePicture')
 
 
 /* Define Routes */
 app.use('/api', signupRoute)
 app.use('/api', authRoute)
+app.use('/api', profilePictureRoute)
 
 
 /* Connect Database */

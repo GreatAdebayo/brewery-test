@@ -2,6 +2,9 @@ const { validationResult } = require('express-validator');
 const User = require('../../models/User')
 const bcrypt = require('bcryptjs');
 const generateJwt = require('./jwt')
+const ProfilePicture = require('../../models/ProfilePicture')
+
+
 
 
 
@@ -49,10 +52,22 @@ exports.getLoggedInUser = async (req, res) => {
         const user = await User.findByPk(req.user.id, {
             attributes: {
                 exclude: ['password']
-            }
+            },
+            include: [
+                {
+                    model: ProfilePicture, as: "profilepicture",
+                    required: true,
+                    attributes: {
+                        exclude: ['userId']
+                    }
+                }
+            ],
+            nest: true,
+            raw: true
         })
         return res.status(200).json({ data: user });
     } catch (err) {
+        console.log(err.message)
         res.status(500).json({ msg: 'something is wrong, we are fixing it', status: 500 });
     }
 }
