@@ -3,8 +3,7 @@ const sequelize = require('../util/db');
 
 const ProfilePicture = sequelize.define('profilepicture', {
     url: {
-        type: Sequelize.STRING,
-        defaultValue:null
+        type: Sequelize.STRING
     },
     cloudinary_id: {
         type: Sequelize.STRING
