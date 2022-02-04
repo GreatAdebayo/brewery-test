@@ -5,9 +5,8 @@ const ProfilePicture = require('../../models/ProfilePicture')
 
 exports.addProfilePicture = async (req, res, next) => {
     /* If file is empty */
-    if (!req.file) {
-        return res.status(400).json({ status: 400, msg: 'no picture found' })
-    }
+    if (!req.file) 
+    return res.status(400).json({ status: 400, msg: 'no picture found' })
 
     const { path } = req.file
 
