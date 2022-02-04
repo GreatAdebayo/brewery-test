@@ -6,8 +6,6 @@ const ProfilePicture = require('../../models/ProfilePicture')
 
 
 
-
-
 exports.authenticateUser = async (req, res) => {
     /* Request validation */
     const errors = validationResult(req);
@@ -32,8 +30,8 @@ exports.authenticateUser = async (req, res) => {
 
 
         /* Generate JWT */
-        generateJwt(user.id, (data) => {
-            return res.status(200).json({ status: 200, data, msg: 'login successfully' });
+        generateJwt(user.id, (token) => {
+            return res.status(200).json({ status: 200, token, msg: 'login successfully' });
         })
 
 
@@ -67,7 +65,6 @@ exports.getLoggedInUser = async (req, res) => {
         })
         return res.status(200).json({ data: user });
     } catch (err) {
-        console.log(err.message)
         res.status(500).json({ msg: 'something is wrong, we are fixing it', status: 500 });
     }
 }

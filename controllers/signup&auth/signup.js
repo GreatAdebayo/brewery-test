@@ -27,8 +27,8 @@ exports.registerUser = async (req, res) => {
             return res.status(400).json({ status: 400, msg: 'email already in use' })
 
 
-        /* Creating new user,
-         Password encryption and Save to DB  */
+        /* Creating new user */
+        /* Password encryption and Save to DB  */
         const salt = bcrypt.genSaltSync(10);
 
         let userDetails = await User.create({
@@ -186,8 +186,8 @@ exports.confirmEmail = async (req, res) => {
 
 
             /* Generate JWT */
-            generateJwt(user.id, (data) => {
-                return res.status(200).json({ status: 200, data, msg: 'successfully created' });
+            generateJwt(user.id, (token) => {
+                return res.status(200).json({ status: 200, token, msg: 'successfully created' });
             })
 
         }
